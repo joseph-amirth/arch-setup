@@ -16,17 +16,22 @@ function wait_for_internet_connection() {
 }
 
 function install_prerequisites() {
+    # Install various basic prereqs and package managers.
     sudo pacman -S --noconfirm git
 
     # To make makepkg work.
     sudo pacman -S --noconfirm base-devel
-}
 
-function install_aur_helper() {
-    # Install rust (prerequisite for paru).
+    sudo pacman -S --noconfirm npm
+
+    # To install cargo.
     sudo pacman -S --noconfirm rustup
     rustup default stable
 
+    sudo pacman -S go
+}
+
+function install_aur_helper() {
     # Install paru (AUR helper).
     git clone https://aur.archlinux.org/paru.git ~/aurtemp
     cd ~/aurtemp
