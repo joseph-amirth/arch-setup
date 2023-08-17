@@ -129,6 +129,12 @@ function install_scripts() {
     ln -sf ~/.config/scripts/get_themes.sh ~/.local/bin/get_themes
 }
 
+function install_lsps() {
+    rustup component add rust-analyzer
+
+    npm install -g typescript typescript-language-server
+}
+
 wait_for_internet_connection
 
 install_prerequisites
@@ -146,3 +152,5 @@ install_web_browser
 setup_dotfiles
 
 install_scripts
+
+install_lsps
