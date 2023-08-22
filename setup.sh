@@ -29,6 +29,8 @@ function install_prerequisites() {
     rustup default stable
 
     sudo pacman -S go
+
+    sudo pacman -S python-pip
 }
 
 function install_aur_helper() {
@@ -49,8 +51,7 @@ function setup_desktop_env() {
     sudo systemctl enable lightdm.service
 
     # Install window manager and compositor.
-    sudo pacman -S --noconfirm bspwm sxhkd rofi polybar feh
-    paru -S --noconfirm picom-jonaburg-git
+    sudo pacman -S --noconfirm bspwm picom sxhkd rofi polybar feh
 
     # Install icon theme for rofi.
     sudo pacman -S --noconfirm papirus-icon-theme
@@ -99,9 +100,6 @@ function setup_terminal() {
 }
 
 function install_file_browser() {
-    # Install python and PIP (prerequisites for ranger).
-    sudo pacman -S --noconfirm python python-pip
-
     # Install ranger (file manager).
     paru -S --noconfirm ranger-git
 
