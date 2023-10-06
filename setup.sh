@@ -123,8 +123,10 @@ function setup_dotfiles() {
 
 function install_scripts() {
     mkdir -p ~/.local/bin
-    ln -sf ~/.config/scripts/set_theme.sh ~/.local/bin/set_theme
-    ln -sf ~/.config/scripts/get_themes.sh ~/.local/bin/get_themes
+    for SCRIPT in $(find ~/.config/scripts -type f); do
+        SCRIPT_NAME=$(basename --suffix=".sh" "$SCRIPT")
+        ln -sf $SCRIPT ~/.local/bin/$SCRIPT_NAME
+    done
 }
 
 wait_for_internet_connection
