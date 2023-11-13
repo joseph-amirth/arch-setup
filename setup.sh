@@ -28,9 +28,9 @@ function install_prerequisites() {
     sudo pacman -S --noconfirm rustup
     rustup default stable
 
-    sudo pacman -S go
+    sudo pacman -S go --noconfirm
 
-    sudo pacman -S python-pip
+    sudo pacman -S python-pip --noconfirm
 }
 
 function install_aur_helper() {
