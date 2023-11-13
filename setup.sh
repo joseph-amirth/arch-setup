@@ -60,7 +60,7 @@ function setup_desktop_env() {
     sudo pacman -S --noconfirm pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
 
     # Install and setup backlight management.
-    sudo usermod -aG video joseph
+    sudo usermod -aG video $(whoami)
     sudo echo "ACTION==\"add\", SUBSYSTEM==\"backlight\", RUN+=\"/bin/chgrp video $sys$devpath/brightness\", RUN+=\"/bin/chmod g+w $sys$devpath/brightness" > /etc/udev/rules.d/backlight.rules
     sudo pacman -S --noconfirm light
 
