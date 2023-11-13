@@ -43,8 +43,8 @@ function install_aur_helper() {
 }
 
 function setup_desktop_env() {
-    # Install X and GPU drivers.
-    sudo pacman -S --noconfirm xorg nvidia-open
+    # Install X.
+    sudo pacman -S --noconfirm xorg
 
     # Install and enable display manager.
     sudo pacman -S --noconfirm lightdm lightdm-slick-greeter
