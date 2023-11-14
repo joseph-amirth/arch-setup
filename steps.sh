@@ -69,7 +69,7 @@ function setup_desktop_env() {
     pacman_install papirus-icon-theme
 
     # Install sound server.
-    pacman_install pipewire-audio pipewire-alsa pipewire-pulese pipewire-jack alsa-utils
+    pacman_install pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack alsa-utils
 
     # Install bluetooth protocol stack.
     pacman_install bluez bluez-utils
@@ -82,9 +82,7 @@ function setup_desktop_env() {
 }
 
 function setup_terminal() {
-    # Install zsh and set it as the default shell.
-    pacman_install zsh
-    chsh -s $(which zsh)
+    # zsh is already installed at this point and the login shell for the user is already zsh.
 
     # Install oh-my-zsh (zsh plugin manager).
     execute_command \
@@ -106,7 +104,7 @@ function setup_terminal() {
     execute_command \
         --info "Installing zsh-syntax-highlighting (zsh plugin)..." \
         --success "Successfully installed zsh-syntax-highlighting." \
-        -- git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        -- git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     # Install Neovim and Kitty.
     pacman_install neovim kitty

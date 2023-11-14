@@ -1,6 +1,8 @@
 #!/bin/bash
 # Bash script with helper functions for logging.
 
+source formatting.sh
+
 # Function that executes a command with some logging. It takes the following arguments:
 # 1. Message for while the command is executing.
 # 2. Message for after the command has successfully executed.
@@ -13,11 +15,6 @@
 #   --error "Error" \
 #   -- command
 function execute_command() {
-    INFO_MSG="Executing $@..."
-    SUCCESS_MSG="Successfully executed $@."
-    ERROR_MSG="Error while executing $@."
-    ABORT_IF_ERROR=0
-
     while [[ $# -gt 0 ]]; do
         case $1 in
             --info)
@@ -49,9 +46,14 @@ function execute_command() {
         esac
     done
 
+    INFO_MSG=${INFO_MSG:-"Executing $@..."}
+    SUCCESS_MSG=${SUCCESS_MSG:-"Successfully executed $@."}
+    ERROR_MSG=${ERROR_MSG:-"Error while executing $@."}
+    ABORT_IF_ERROR=${ABORT_IF_ERROR:-0}
+
     infoln "$INFO_MSG"
 
-    $@ &> /dev/null
+    $@ &> $LOG_FILE
     EXIT_CODE=$?
 
     clear_line
