@@ -5,7 +5,9 @@ source logging.sh
 source steps.sh
 
 read -sp "Enter password for sudo: " ROOT_PASSWD
+
 LOG_FILE=$(mktemp)
+infoln "Log file for stdout of commands: $LOG_FILE"
 
 wait_for_internet_connection
 

@@ -53,6 +53,7 @@ function execute_command() {
 
     infoln "$INFO_MSG"
 
+    echo "[COMMAND] $@" >> $LOG_FILE
     $@ &> $LOG_FILE
     EXIT_CODE=$?
 

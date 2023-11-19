@@ -1,6 +1,8 @@
 #!/bin/bash
 # Bash script with functions for setting up Arch.
 
+source logging.sh
+
 function my_sudo() {
     echo -e "$ROOT_PASSWD" | sudo -Sk "$@"
 }
@@ -55,12 +57,13 @@ function install_aur_helper() {
 }
 
 function setup_desktop_env() {
-    # Install X.
-    pacman_install xorg
+    # Install X (display server) and GPU drivers.
+    pacman_install xorg mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
 
     # Install and enable display manager.
     pacman_install lightdm lightdm-slick-greeter
     my_sudo systemctl enable lightdm.service
+    my_sudo sed -i '/\[Seat:\*\]/a\greeter-session=lightdm-slick-greeter' /etc/lightdm/lightdm.conf
 
     # Install window manager and compositor.
     pacman_install bspwm picom sxhkd rofi polybar feh
