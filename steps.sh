@@ -127,7 +127,7 @@ function install_file_browser() {
     git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 
     # Install pillow for ranger image preview. 
-    pip install pillow
+    pacman_install python-pillow
 }
 
 function install_web_browser() {
