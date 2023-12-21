@@ -59,6 +59,7 @@ function install_aur_helper() {
 function setup_desktop_env() {
     # Install X (display server) and GPU drivers.
     pacman_install xorg mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon
+    pacman_install libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau
 
     # Install and enable display manager.
     pacman_install lightdm lightdm-slick-greeter
