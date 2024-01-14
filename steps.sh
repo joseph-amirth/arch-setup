@@ -142,7 +142,7 @@ function setup_dotfiles() {
     execute_command \
         --info "Setting up dotfiles with chezmoi..." \
         --success "Successfully setup dotfiles with chezmoi." \
-        -- chezmoi init --apply https://github.com/joseph-amirth/.dotfiles.git
+        -- chezmoi init --apply https://github.com/joseph-amirth/dotfiles.git
 }
 
 function install_scripts() {
